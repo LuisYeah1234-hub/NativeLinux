@@ -28,6 +28,7 @@
  */
 
 /* Modified by Dmitri Arkhangelski, 2007. */
+/* Modified by LuisYeah1234-hub, 2024. */
 
 /**
  * @file keytrans.c
