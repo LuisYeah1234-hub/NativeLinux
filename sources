@@ -1,0 +1,20 @@
+TARGETNAME=nativelinux
+TARGETTYPE=PROGRAM
+UMTYPE=nt
+
+
+MINWIN_SDK_LIB_PATH=$(SDK_LIB_PATH)
+INCLUDES=$(DDK_INC_PATH);./ndk
+MSC_WARNING_LEVEL=/wd4242
+
+SOURCES=rtlfuncs.c \
+	main.c \
+     	keytrans.c
+
+PRECOMPILED_HEADERS=precomp.h
+
+TARGETLIBS= \
+$(DDK_LIB_PATH)\ntdll.lib \
+$(DDK_LIB_PATH)\nt.lib \
+
+USE_NTDLL=1
