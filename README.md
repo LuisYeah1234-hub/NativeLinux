@@ -48,6 +48,8 @@ No ANSI sequences due of it being unsupported in Native mode.
 # To do
   - [ ] Get keyboard to work on Windows 2000
   - [ ] Get backspace to work
+  - [ ] Fix more crashes during some commands on NativeLinux
+  - [ ] Fix ctrl outputting ⌃@ sometimes when pressed
 
 # Credits.
 [mini-rv32ima](https://github.com/cnlohr/mini-rv32ima) for the RISC V emulator.
