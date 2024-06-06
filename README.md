@@ -2,13 +2,10 @@
 Runs Linux in the Windows Native Mode (chkdsk screen).
 Supported starting from Windows XP to Windows 11, Also works on the Open Source Windows project ReactOS.
 
-> [!WARNING]
-> You cannot go to the Windows GUI After it has been ran!
-> 
-> Unless it has been Removed from the Registry, Or Removed from System32 Folder
-> 
-> I recommend you to test this on a Virtual Machine!!
-> 
+> [!IMPORTANT]
+> You can't go back to the Windows GUI after it has been ran. You can revert the Registry changes that have been done or You just delete the executable from the System32
+> folder.
+> <br /> Recommended to run it in a Virtual Machine!
 
 # How to build?
 Requires Windows Driver Kit 7.1.0
@@ -19,17 +16,22 @@ Go to the source code of NativeLinux and type the following command:
 
 `build /g /W` or let a batch do this for you by typing just `b`.
 
-# NOTE
-Some files had to be modified due to many compilation errors that includes mini-rv32ima.h 
+# How to build?
+Requires Windows Driver Kit 7.1.0
 
-Including disabling some warnings
+After installed search for x86 Free Build Environment. Open it
 
-An portable stdint.h had to be added due of not being included in WDK 7. Resulting in many compilation errors
+Go to the source code of NativeLinux and type the following command:
 
-The keyboard is US Layout only.
+`build /g /W` or let a batch do this for you by typing just `b`.
 
-# Screenshots
-Some Screenshots of NativeLinux Running.
+> [!NOTE]
+> Some files had to be modified due to many compilation errors that includes mini-rv32ima.h
+> <br /> Including disabling some warnings
+> <br /> An portable stdint.h had to be added due of not being included in WDK 7. Resulting in many compilation errors
+> <br /> The keyboard is US Layout only.
+
+# Some Screenshots of nativelinux running.
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d9f60038-0219-43ae-aa55-87d9fb8258ee)
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d4324a79-c9e8-450a-a458-8f183d0a0c0c)
 
