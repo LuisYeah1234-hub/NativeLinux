@@ -16,15 +16,6 @@ Go to the source code of NativeLinux and type the following command:
 
 `build /g /W` or let a batch do this for you by typing just `b`.
 
-# How to build?
-Requires Windows Driver Kit 7.1.0
-
-After installed search for x86 Free Build Environment. Open it
-
-Go to the source code of NativeLinux and type the following command:
-
-`build /g /W` or let a batch do this for you by typing just `b`.
-
 > [!NOTE]
 > Some files had to be modified due to many compilation errors that includes mini-rv32ima.h
 > <br /> Including disabling some warnings
