@@ -31,7 +31,7 @@ Go to the source code of NativeLinux and type the following command:
 > <br /> An portable stdint.h had to be added due of not being included in WDK 7. Resulting in many compilation errors
 > <br /> The keyboard is US Layout only.
 
-# Some Screenshots of nativelinux running.
+# Some Screenshots of nativelinux Running.
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d9f60038-0219-43ae-aa55-87d9fb8258ee)
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d4324a79-c9e8-450a-a458-8f183d0a0c0c)
 
