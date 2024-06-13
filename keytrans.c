@@ -28,7 +28,6 @@
  */
 
 /* Modified by Dmitri Arkhangelski, 2007. */
-/* Modified by LuisYeah1234-hub, 2024. */
 
 /**
  * @file keytrans.c
@@ -46,6 +45,7 @@ typedef struct _SCANTOASCII {
 } SCANTOASCII, *PSCANTOASCII;
 
 SCANTOASCII ScanToAscii[] = {
+{0x01,  0x1B, 0x1B},  /* Esc */
 {0x1e,  'a',  'A' },
 {0x30,  'b',  'B' },
 {0x2e,  'c',  'C' },
@@ -185,6 +185,11 @@ void IntTranslateKey(PKEYBOARD_INPUT_DATA InputData, KBD_RECORD *kbd_rec)
 
   if(InputData->Flags & KEY_E0)
     kbd_rec->dwControlKeyState |= ENHANCED_KEY;
+
+  // Check for Shift + Esc combination
+  if ((dwControlKeyState & SHIFT_PRESSED) && (InputData->MakeCode == 0x01) && !(InputData->Flags & KEY_BREAK)) {
+     NtTerminateProcess(NtCurrentProcess(), 0);
+  }
 
   kbd_rec->AsciiChar = IntAsciiFromInput(InputData,kbd_rec->dwControlKeyState);
 }

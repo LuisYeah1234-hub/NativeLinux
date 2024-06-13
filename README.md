@@ -43,7 +43,7 @@ No ANSI sequences due of it being unsupported in Native mode.
   - [ ] Get backspace to work
   - [ ] Fix more crashes during some commands on NativeLinux
   - [ ] Fix ctrl outputting ⌃@ sometimes when pressed
-  - [ ] Maybe make the exit command redirect to the Windows GUI.
+  - [X] ~~Maybe make the exit command redirect to the Windows GUI.~~ (Implemented as a Shift + ESC shortcut)
 
 # Credits.
 [mini-rv32ima](https://github.com/cnlohr/mini-rv32ima) for the RISC V emulator.
