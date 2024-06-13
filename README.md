@@ -3,9 +3,8 @@ Runs Linux in the Windows Native Mode (chkdsk screen).
 Supported starting from Windows XP to Windows 11, Also works on the Open Source Windows project ReactOS.
 
 > [!IMPORTANT]
-> You can't go back to the Windows GUI after it has been ran. You can revert the Registry changes that have been done or You just delete the executable from the System32
-> folder.
-> <br /> Recommended to run it in a Virtual Machine!
+> To exit this Linux press both Shift and ESC. It should return you to the Windows GUI!.
+> 1.0 Does NOT have a exit command, nor shortcut. Use the new version if you want to test on Real Machine!
 
 # How to build?
 Requires Windows Driver Kit 7.1.0
