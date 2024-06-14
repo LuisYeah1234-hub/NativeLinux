@@ -4,7 +4,38 @@ Supported starting from Windows XP to Windows 11, Also works on the Open Source 
 
 > [!IMPORTANT]
 > To exit this Linux press both Shift and ESC. It should return you to the Windows GUI!.
+> 
 > 1.0 Does NOT have a exit command, nor shortcut. Use the new version if you want to test on Real Machine!
+>
+> NativeLinux does NOT have keyboard on some Windows 11 Builds!. Test it on a Virtual Machine
+
+# Manual Uninstallation in case of Keyboard not working
+Thanks to @PetrNebukin for these Instructions
+Manual removal instructions:
+1. Restart the computer several times until the "Preparing Automatic Repair" label appears and the "Automatic Repair" blue screen appears.
+2. On the blue screen, go to: Advanced options -> Troubleshoot -> Advanced options -> Command prompt
+3.
+```
+cd \d C;\Windows\System32
+rm nativelinux.exe
+regedit
+```
+4. In Registry Editor click on HKEY_LOCAL_MACHINE, then File -> Load Hive -> Choose file C:\Windows\System32\config\SYSTEM -> Enter any name (example: mainsys) -> Go to ControlSet001\Control\Session Manager
+5. Edit BootExecute from this:
+```
+autocheck autochk *
+nativeshell
+
+```
+to this:
+```
+autocheck autochk *
+
+```
+6. Reboot and enjoy!
+
+> [!NOTE]
+> remove.reg and install.bat doesn't work in Windows PE, don't try it
 
 # How to build?
 Requires Windows Driver Kit 7.1.0
@@ -38,7 +69,7 @@ Backspace has been disabled. Due to it being broken
 No ANSI sequences due of it being unsupported in Native mode.
 
 # To do
-  - [ ] Get keyboard to work on Windows 2000
+  - [ ] Get keyboard to work on Windows 2000 and Newer Windows 11 builds
   - [ ] Get backspace to work
   - [ ] Fix more crashes during some commands on NativeLinux
   - [ ] Fix ctrl outputting ⌃@ sometimes when pressed
