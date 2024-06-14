@@ -16,7 +16,7 @@ Manual removal instructions:
 2. On the blue screen, go to: Advanced options -> Troubleshoot -> Advanced options -> Command prompt
 3.
 ```
-cd \d C;\Windows\System32
+cd \d C:\Windows\System32
 rm nativelinux.exe
 regedit
 ```
