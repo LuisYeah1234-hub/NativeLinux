@@ -16,7 +16,7 @@ Manual removal instructions:
 2. On the blue screen, go to: Advanced options -> Troubleshoot -> Advanced options -> Command prompt
 3.
 ```
-cd \d C:\Windows\System32
+cd /d C:\Windows\System32
 rm nativelinux.exe
 regedit
 ```
@@ -24,13 +24,11 @@ regedit
 5. Edit BootExecute from this:
 ```
 autocheck autochk *
-nativeshell
-
+nativelinux
 ```
 to this:
 ```
 autocheck autochk *
-
 ```
 6. Reboot and enjoy!
 
