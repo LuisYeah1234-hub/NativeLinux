@@ -4,10 +4,15 @@ Supported starting from Windows XP to Windows 11, Also works on the Open Source 
 
 > [!IMPORTANT]
 > To exit this Linux press both Shift and ESC. It should return you to the Windows GUI!.
-> 
-> 1.0 Does NOT have a exit command, nor shortcut. Use the new version if you want to test on Real Machine!
->
-> NativeLinux does NOT have keyboard on some Windows 11 Builds!. Test it on a Virtual Machine
+> <br /> 1.0 Does NOT have a exit command, nor shortcut. Use the new version if you want to test on Real Machine!
+> <br /> NativeLinux does NOT have keyboard on some Windows 11 Builds!. Test it on a Virtual Machine
+
+> [!CAUTION]
+> I've seen some unknown websites such as miku.place and GitOwl talking about this project
+> <br /> Legit or not i better warn now
+> <br /> Do NOT download NativeLinux from anywhere else!! NativeLinux is and will stay only on GitHub.
+> <br /> And if it does run in GUI. The Program is an Fake. 
+> <br /> NativeLinux does not run in GUI! It will throw an error. "Cannot run NativeLinux.exe in Win32 Mode"
 
 # Manual Uninstallation in case of Keyboard not working
 Thanks to @PetrNebukin for these Instructions
