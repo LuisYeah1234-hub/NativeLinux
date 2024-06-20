@@ -1,82 +1,75 @@
 # NativeLinux
-Runs Linux in the Windows Native Mode (chkdsk screen).
-Supported starting from Windows XP to Windows 11, Also works on the Open Source Windows project ReactOS.
+
+Runs Linux in the Windows Native Mode (chkdsk screen). Supports Windows XP to Windows 11 and also Works on the Open Source Project ReactOS.
 
 > [!IMPORTANT]
-> To exit this Linux press both Shift and ESC. It should return you to the Windows GUI!.
-> <br /> 1.0 Does NOT have a exit command, nor shortcut. Use the new version if you want to test on Real Machine!
-> <br /> NativeLinux does NOT have keyboard on some Windows 11 Builds!. Test it on a Virtual Machine
+> Shift + ESC to return to the GUI.
+> <br /> NativeLinux Version 1.0 Does **NOT** have an Exit Shortcut nor a Exit Command. Use NativeLinux 1.1 
+> <br /> NativeLinux does not have a Working Keyboard in some Builds of Windows 11. Test in a Virtual Machine!
 
 > [!CAUTION]
-> I've seen some unknown websites such as miku.place and GitOwl talking about this project
-> <br /> Legit or not i better warn now
-> <br /> Do NOT download NativeLinux from anywhere else!! NativeLinux is and will stay only on GitHub.
-> <br /> And if it does run in GUI. The Program is an Fake. 
-> <br /> NativeLinux does not run in GUI! It will throw an error. "Cannot run NativeLinux.exe in Win32 Mode"
+> I've seen some unknown Websites such as miku.place and GitOwl talking about this Project.
+> <br /> Let it be Legit or not. I still warn you
+> <br /> Do **NOT** download NativeLinux from anywhere else! **NativeLinux is only Avalible in this Repository.**
+> <br /> NativeLinux does **NOT** run in the GUI. **If it runs in the GUI. It's an Fake Program.**
+> <br /> The Normal NativeLinux will give an error: **"Cannot run NativeLinux in Win32 Mode".**
 
-# Manual Uninstallation in case of Keyboard not working
-Thanks to @PetrNebukin for these Instructions
-Manual removal instructions:
-1. Restart the computer several times until the "Preparing Automatic Repair" label appears and the "Automatic Repair" blue screen appears.
-2. On the blue screen, go to: Advanced options -> Troubleshoot -> Advanced options -> Command prompt
-3.
-```
-cd /d C:\Windows\System32
-rm nativelinux.exe
-regedit
-```
-4. In Registry Editor click on HKEY_LOCAL_MACHINE, then File -> Load Hive -> Choose file C:\Windows\System32\config\SYSTEM -> Enter any name (example: mainsys) -> Go to ControlSet001\Control\Session Manager
-5. Edit BootExecute from this:
-```
-autocheck autochk *
-nativelinux
-```
-to this:
-```
-autocheck autochk *
-```
-6. Reboot and enjoy!
-
-> [!NOTE]
-> remove.reg and install.bat doesn't work in Windows PE, don't try it
-
-# How to build?
+# How to Build NativeLinux?
 Requires Windows Driver Kit 7.1.0
 
-After installed search for x86 Free Build Environment. Open it
+After Installing. Search for x86 Free Build Enviroment. Open it.
 
-Go to the source code of NativeLinux and type the following command:
-
-`build /g /W` or let a batch do this for you by typing just `b`.
+Go to the Source Code of NativeLinux and Type the following Command: `build /g /W` or let a batch do this for you by just typing `b`.
 
 > [!NOTE]
-> Some files had to be modified due to many compilation errors that includes mini-rv32ima.h
-> <br /> Including disabling some warnings
-> <br /> An portable stdint.h had to be added due of not being included in WDK 7. Resulting in many compilation errors
-> <br /> The keyboard is US Layout only.
+> Some Files had to be modified due to many Compilation Errors that includes mini-rv32ima.h
+> <br /> Including disabling some Warnings.
+> <br /> An Portable stdint.h had to be added due to of not included in WDK 7. Resulting in many Compilation Errors.
+> <br /> The Keyboard is US Layout only.
 
-# Some Screenshots of nativelinux Running.
+# Installation
+
+Copy nativelinux.exe to the %SystemRoot%\System32 (C:\Windows\System32) Folder.
+
+Open the install.reg from the `Files` Directory.
+
+From a Release Build. Just open the install.cmd which will do everything for you. **`Requires Admin Privileges (UAC).`**
+
+# Manual Uninstallation in case of Keyboard not working
+
+- Reboot the Computer Several Times until you get the "Preparing Automatic Repair" Screen. Then after waiting a bit you get the "Automatic Repair" Screen. **Do NOT click on Reboot!** Click "Advanced Options"
+
+- After Clicking "Advanced Options" Go to Troubleshoot > Advanced Options > Command Prompt
+
+- In The Command Prompt Type: `cd /d C:\Windows\System32` then `rm nativelinux.exe`
+
+
+- After doing these steps. Type in the Command Prompt: `regedit`
+
+- In the Registry Editor click HKEY_LOCAL_MACHINE. Then File > Load Hive > Choose C:\Windows\System32\config\SYSTEM > Enter any name (Example: mainsystem) > Go to ControlSet001\Control\Session Manager
+
+- Edit BootExecute change it from this: `autocheck autochk * nativelinux` to this: `autocheck autochk *`
+
+- Reboot and Enjoy!
+
+> [!NOTE]
+> remove.reg and install.bat doesn't work in Windows PE. Don't even try it.
+
+# Limited Features
+
+Backspace has been Disabled. Due to it being Broken.
+
+No ANSI sequences due to it being unsupported in Native Mode.
+
+# Some Screenshots of NativeLinux running.
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d9f60038-0219-43ae-aa55-87d9fb8258ee)
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d4324a79-c9e8-450a-a458-8f183d0a0c0c)
 
-# Installation
-Copy nativelinux.exe to %SystemRoot%\System32 (C:\Windows\System32\)
-
-Open the install.reg from the `files` directory.
-
-From a release build just open the install.cmd which will do everything for you, Requires Admin privileges (UAC)
-
-# Limited features
-Backspace has been disabled. Due to it being broken
-
-No ANSI sequences due of it being unsupported in Native mode.
-
 # To do
-  - [ ] Get keyboard to work on Windows 2000 and Newer Windows 11 builds
+  - [ ] Get Keyboard to work on Windows 2000 and Newer Windows 11 builds
   - [ ] Get backspace to work
   - [ ] Fix more crashes during some commands on NativeLinux
-  - [ ] Fix ctrl outputting ⌃@ sometimes when pressed
-  - [X] ~~Maybe make the exit command redirect to the Windows GUI.~~ (Implemented as a Shift + ESC shortcut)
+  - [ ] Fix CTRL outputting ⌃@ sometimes when pressed
 
 # Credits.
 [mini-rv32ima](https://github.com/cnlohr/mini-rv32ima) for the RISC V emulator.
