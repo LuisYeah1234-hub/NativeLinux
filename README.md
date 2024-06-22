@@ -10,7 +10,7 @@ Runs Linux in the Windows Native Mode (chkdsk screen). Supports Windows XP to Wi
 > [!CAUTION]
 > I've seen some unknown Websites such as miku.place and GitOwl talking about this Project.
 > <br /> Let it be Legit or not. I still warn you
-> <br /> Do **NOT** download NativeLinux from anywhere else! **NativeLinux is only Avalible in this Repository.**
+> <br /> Do **NOT** download NativeLinux from anywhere else! **NativeLinux is only Available in this Repository.**
 > <br /> NativeLinux does **NOT** run in the GUI. **If it runs in the GUI. It's an Fake Program.**
 > <br /> The Normal NativeLinux will give an error: **"Cannot run NativeLinux in Win32 Mode".**
 
