@@ -48,7 +48,17 @@ From a Release Build. Just open the install.cmd which will do everything for you
 
 - In the Registry Editor click HKEY_LOCAL_MACHINE. Then File > Load Hive > Choose C:\Windows\System32\config\SYSTEM > Enter any name (Example: mainsystem) > Go to ControlSet001\Control\Session Manager
 
-- Edit BootExecute change it from this: `autocheck autochk * nativelinux` to this: `autocheck autochk *`
+- Edit BootExecute change it from this: 
+  ```
+  autocheck autochk *
+  nativelinux
+  ```
+  
+- To this:
+  ```
+  autocheck autochk *
+  ```
+  
 
 - Reboot and Enjoy!
 
