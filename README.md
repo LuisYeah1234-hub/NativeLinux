@@ -1,6 +1,6 @@
 # NativeLinux
 
-Runs Linux in the Windows Native Mode (chkdsk screen). Supports Windows 2000 up to Windows 11 and also Works on the Open Source Project ReactOS.
+Runs Linux in the Windows Native Mode (chkdsk screen). Supports Windows NT 4.0 up to Windows 11 and also Works on the Open Source Project ReactOS.
 
 > [!IMPORTANT]
 > Shift + ESC to return to the GUI.
