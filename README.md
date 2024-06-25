@@ -1,6 +1,6 @@
 # NativeLinux
 
-Runs Linux in the Windows Native Mode (chkdsk screen). Supports Windows XP to Windows 11 and also Works on the Open Source Project ReactOS.
+Runs Linux in the Windows Native Mode (chkdsk screen). Supports Windows 2000 up to Windows 11 and also Works on the Open Source Project ReactOS.
 
 > [!IMPORTANT]
 > Shift + ESC to return to the GUI.
@@ -76,7 +76,7 @@ No ANSI sequences due to it being unsupported in Native Mode.
 ![image](https://github.com/LuisYeah1234-hub/NativeLinux/assets/64372171/d4324a79-c9e8-450a-a458-8f183d0a0c0c)
 
 # To do
-  - [ ] Get Keyboard to work on Windows 2000 and Newer Windows 11 builds
+  - [X] Get Keyboard to work on Windows 2000 and Newer Windows 11 builds
   - [ ] Get backspace to work
   - [ ] Fix more crashes during some commands on NativeLinux
   - [ ] Fix CTRL outputting ⌃@ sometimes when pressed

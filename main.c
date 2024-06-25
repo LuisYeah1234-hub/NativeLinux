@@ -4,17 +4,12 @@
 HANDLE hKeyboard;
 
 #define BOOT_IMAGE_SIZE  3476752
-#define SCREEN_CHAR_WIDTH 80
-#define SCREEN_CHAR_HEIGHT 30
 
 BOOLEAN Vt100Parsing = FALSE;
 KEYBOARD_INPUT_DATA g_KeyboardData;
 
 void mini_rv32ima_putchar(char c) {
     char string[2] = { c, 0 };
-    if (c == '^' || c == '@') {  // Workaround on a bug that spams ^@ Until the program crashes.
-        return;
-    }
 
 	if (c == '\033') {
         // We ignore any type of ANSI as they aren't supported in Native
@@ -26,7 +21,7 @@ void mini_rv32ima_putchar(char c) {
 		return;
 	}
  
-        RtlCliDisplayString(string);
+    RtlCliDisplayString(string);
 }
 
 void mini_rv32ima_minisleep() {
@@ -46,21 +41,21 @@ int mini_rv32ima_key_hit(void) {
     LARGE_INTEGER ByteOffset;
     NTSTATUS Status;
 
-    // Clean up memories
+    // Clean up memory
     RtlZeroMemory(&Iosb, sizeof(Iosb));
     RtlZeroMemory(&ByteOffset, sizeof(ByteOffset));
     RtlZeroMemory(&g_KeyboardData, sizeof(KEYBOARD_INPUT_DATA));
 
-    // Try to read the data
+    // Try to read the data synchronously
     Status = NtReadFile(hKeyboard, NULL, NULL, NULL, &Iosb, &g_KeyboardData, sizeof(KEYBOARD_INPUT_DATA), &ByteOffset, NULL);
 
-    if (Status == STATUS_PENDING) {
+    if (NT_SUCCESS(Status) && Iosb.Information == sizeof(KEYBOARD_INPUT_DATA)) {
+        // A key hit has been detected, return.
+        return 1;
+    } else if (Status == STATUS_PENDING) {
         // No input to read at the moment, cancel read and return.
         NtCancelIoFile(hKeyboard, &Iosb);
         return 0;
-    } else if (NT_SUCCESS(Status)) {
-        // A key hit has been detected, return.
-        return 1;
     } else {
         return 0;
     }
