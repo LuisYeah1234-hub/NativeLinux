@@ -3,18 +3,6 @@
 #ifndef _MINI_RV32IMAH_H
 #define _MINI_RV32IMAH_H
 
-int32_t rs1;
-int32_t rs2;
-uint32_t ofs_pc;
-uint32_t rdid;
-uint32_t trap;
-uint32_t rval;
-uint32_t pc;
-uint32_t cycle;
-int icount;
-uint32_t is_reg;
-uint32_t dowrite;
-
 /**
     To use mini-rv32ima.h for the bare minimum, the following:
 
@@ -129,6 +117,11 @@ MINIRV32_DECORATE int32_t MiniRV32IMAStep( struct MiniRV32IMAState * state, uint
 MINIRV32_STEPPROTO
 #endif
 {
+	int icount;
+	uint32_t trap;
+	uint32_t rval;
+	uint32_t pc;
+	uint32_t cycle;
 	uint32_t new_timer = CSR( timerl ) + elapsedUs;
 	if( new_timer < CSR( timerl ) ) CSR( timerh )++;
 	CSR( timerl ) = new_timer;
@@ -160,6 +153,7 @@ MINIRV32_STEPPROTO
 	else // No timer interrupt?  Execute a bunch of instructions.
 	for(icount = 0; icount < count; icount++ )
 	{
+		uint32_t ofs_pc;
 		uint32_t ir = 0;
 		rval = 0;
 		cycle++;
@@ -177,6 +171,7 @@ MINIRV32_STEPPROTO
 		}
 		else
 		{
+			uint32_t rdid;
 			ir = MINIRV32_LOAD4( ofs_pc );
 			rdid = (ir >> 7) & 0x1f;
 
@@ -207,6 +202,8 @@ MINIRV32_STEPPROTO
 				}
 				case 0x63: // Branch (0b1100011)
 				{
+					int32_t rs1;
+					int32_t rs2;
 					uint32_t immm4 = ((ir & 0xf00)>>7) | ((ir & 0x7e000000)>>20) | ((ir & 0x80) << 4) | ((ir >> 31)<<12);
 					if( immm4 & 0x1000 ) immm4 |= 0xffffe000;
 					rs1 = REG((ir >> 15) & 0x1f);
@@ -466,6 +463,7 @@ MINIRV32_STEPPROTO
 				}
 				case 0x2f: // RV32A (0b00101111)
 				{
+					uint32_t dowrite;
 					uint32_t rs1 = REG((ir >> 15) & 0x1f);
 					uint32_t rs2 = REG((ir >> 20) & 0x1f);
 					uint32_t irmid = ( ir>>27 ) & 0x1f;
