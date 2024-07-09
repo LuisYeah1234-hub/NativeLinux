@@ -79,7 +79,6 @@ No ANSI sequences due to it being unsupported in Native Mode.
   - [X] Get Keyboard to work on Windows 2000 and Newer Windows 11 builds
   - [ ] Get backspace to work
   - [ ] Fix more crashes during some commands on NativeLinux
-  - [ ] Fix CTRL outputting ⌃@ sometimes when pressed
 
 # Credits.
 [mini-rv32ima](https://github.com/cnlohr/mini-rv32ima) for the RISC V emulator.
