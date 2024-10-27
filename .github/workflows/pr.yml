@@ -1,0 +1,50 @@
+name: "PR: Build NativeLinux Check"
+
+on:
+  pull_request:
+    paths:
+      - '**/*.c'
+      - '**/*.h'
+      - '**/sources'
+      - '**/Makefile'
+      # Might be modified later on if any other files might be added etc
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Install & Configure WDK 7
+      uses: LuisYeah1234-hub/setup-wdk7@v1
+      with:
+        type: fre
+        arch: x86
+        os: wxp
+        
+    - name: Build NativeLinux
+      shell: cmd
+      run: |
+        build /g /W /M 2
+        
+        rem build command reports success even if build fails so we have to check if the exe itself exists.
+        setlocal enabledelayedexpansion
+        
+        set "found=0"
+        for /d %%d in ("${{ github.workspace }}\objfre_wxp_*") do (
+            dir /s /b "%%d\nativelinux.exe" 2>nul | findstr /r /c:"nativelinux.exe" >nul
+            if not errorlevel 1 (
+                set "found=1"
+                goto :found
+            )
+        )
+
+        :found
+        if %found%==1 (
+            echo NativeLinux found.
+        ) else (
+            echo NativeLinux not found. Check failed.
+            exit /b 1
+        )
